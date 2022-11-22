@@ -1,7 +1,8 @@
 import {React, useState} from "react";
 import "./reviewForm.css";
 
-const ReviewForm = () => {
+const ReviewForm = (props) => {
+  const {setBIsShow ,bIsShow}=props
   const [reviewData, setReviewData] = useState({
     sReviewTitle:"",
     sReviewContent:""
@@ -60,7 +61,9 @@ const ReviewForm = () => {
             />
           </div>
           <div>
-            <input className="input-button" type="button" value="Cancel" />
+            <input className="input-button" type="button" value="Cancel" onClick={()=>{
+              setBIsShow(false)
+            }}/>
           </div>
         </div>
       </form>

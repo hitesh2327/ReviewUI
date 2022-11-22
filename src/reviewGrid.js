@@ -25,59 +25,67 @@ const ReviewGrid = () => {
     }
   };
   const [reviewData, setReviewData] = useState([]);
+  const [bIsShow, setBIsShow] = useState(false);
   useEffect(() => {
     getReview();
   }, []);
 
   return (
     <div>
-      <table id="reviewGrid">
-        <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>Content</th>
-          <th>Action</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Movie</td>
-          <td>Awesome Movie</td>
-          <td>
-            <FontAwesomeIcon
-              icon={faTrash}
-              className="fontAwesomeIC"
-              color="red"
-            />
-            <FontAwesomeIcon
-              icon={faPencil}
-              color="green"
-              onClick={() => {
-                <ReviewForm />;
-              }}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Game</td>
-          <td>War Game</td>
-          <td>
-            <FontAwesomeIcon
-              icon={faTrash}
-              className="fontAwesomeIC"
-              color="red"
-            />
-            <FontAwesomeIcon
-              icon={faPencil}
-              color="green"
-              onClick={() => {
-                <ReviewForm />;
-              }}
-            />
-          </td>
-        </tr>
+      {bIsShow ? (
+        <ReviewForm 
+        bIsShow={bIsShow} setBIsShow={setBIsShow}/>
+      ) : (
+        <>
+          <table id="reviewGrid">
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Movie</td>
+              <td>Awesome Movie</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className="fontAwesomeIC"
+                  color="red"
+                />
+                <i
+                  onClick={() => {
+                    console.log("yha aaya");
+                    setBIsShow(true)
+                  }}
+                >
+                  <FontAwesomeIcon icon={faPencil} color="green" />
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Game</td>
+              <td>War Game</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className="fontAwesomeIC"
+                  color="red"
+                />
+                <i
+                  onClick={() => {
+                    console.log("yha aaya");
+                    setBIsShow(true)
+                  }}
+                >
+                  <FontAwesomeIcon icon={faPencil} color="green" />
+                </i>
+              </td>
+            </tr>
 
-        {/* {reviewData && Array.isArray(reviewData) && reviewData.length > 0
+            {/* {reviewData && Array.isArray(reviewData) && reviewData.length > 0
           ? reviewData.map((itm, ind) => {
               <tr>
                 <td>{itm.iReviewId ? itm.iReviewId : ""}</td>
@@ -100,7 +108,21 @@ const ReviewGrid = () => {
               </tr>;
             })
           : null} */}
-      </table>
+          </table>
+          <div class="btn-row">
+            <div>
+              <input
+                className="input-button"
+                type="button"
+                value="Add Review"
+                onClick={() => {
+                  setBIsShow(true);
+                }}
+              />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
