@@ -10,6 +10,7 @@ const ReviewForm = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    
     console.log("Data : ", reviewData);
   };
   const handleOnChange=(data)=>{
